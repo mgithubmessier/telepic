@@ -1,12 +1,12 @@
 angular.module('TelePic').controller('HomeController', [
     '$scope',
     function($scope) {
-    	console.log('dpoingpjndfn')
     	//get number of existing games for this user, mock for now
-    	var iButtons = 4;
-    	$scope.aButtons = ['New Game'];
-    	for(var i = 0; i < iButtons; i++) {
-    		$scope.aButtons.push('Game#'+(i+1));
+    	var iNumGameIds = 4;
+    	$scope.sNewGame = 'New';
+    	$scope.aGameIds = [];
+    	for(var i = 0; i < iNumGameIds; i++) {
+    		$scope.aGameIds.push((i+1));
     	}
     }
 ]);

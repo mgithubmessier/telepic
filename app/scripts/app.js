@@ -12,7 +12,7 @@ telepic.config(['$routeProvider',function($routeProvider) {
 		templateUrl: 'app/templates/home.html',
 		controller: 'HomeController'
 	}).
-	when('/game', {
+	when('/game/:iGameId', {
 		templateUrl: 'app/templates/game.html',
 		controller: 'GameController'
 	})
