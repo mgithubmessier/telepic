@@ -1,4 +1,18 @@
 <h1>Game #{{iSelectedGame}}</h1>
-<button>View players and status</button>
-<button ng-bind="sRecMessage"></button>
-<button ng-bind="sSenMessage"></button>
+<div ng-show="bGameMenu">
+	<button class="col-xs-12" ng-bind="sPlayersStatus" ng-click="viewPlayersStatus()"></button>
+	<button class="col-xs-12" ng-bind="sRecMessage" ng-click="viewRecMessage()"></button>
+	<button class="col-xs-12" ng-bind="sSenMessage" ng-click="viewSenMessage()"></button>
+</div>
+<div ng-hide="bGameMenu">
+	<div ng-show="bPlayersStatus">
+		Player statuses
+	</div>		
+	<div ng-show="bSenMessage">
+		sent message
+	</div>
+	<div ng-show="bRecMessage">
+		received messages
+	</div>
+	<button class="col-xs-12" ng-click="viewGameMenu()">Back</button>
+</div>

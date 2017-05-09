@@ -1,0 +1,31 @@
+[
+	{
+		"gameId":1,
+		"status":"finished",
+		"players": [
+			{
+				"name":"Billy",
+				"status":"Done"
+			},
+			{
+				"name":"Bobby",
+				"status":"Done"
+			},
+			{
+				"name":"You",
+				"status":"Done"
+			},
+			{
+				"name":"Sandra",
+				"status":"Pending"
+			},
+			{
+				"name":"Rachel",
+				"status":"Pending"
+			}
+		]
+	},
+	{
+
+	}
+]
