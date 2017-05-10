@@ -1,0 +1,27 @@
+[
+	{
+		"name":"Billy",
+		"status":"Done",
+		"profilePicUrl":"PIC_URL"
+	},
+	{
+		"name":"Bobby",
+		"status":"Done",
+		"profilePicUrl":"PIC_URL"
+	},
+	{
+		"name":"You",
+		"status":"Pending",
+		"profilePicUrl":"PIC_URL"
+	},
+	{
+		"name":"Sandra",
+		"status":"Pending",
+		"profilePicUrl":"PIC_URL"
+	},
+	{
+		"name":"Rachel",
+		"status":"Pending",
+		"profilePicUrl":"PIC_URL"
+	}
+]

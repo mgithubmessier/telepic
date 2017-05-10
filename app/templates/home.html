@@ -1,2 +1,4 @@
-<a href="#/game:{{sNewGame}}"><button class='col-xs-12'>{{sNewGame}} Game</button></a>
-<a ng-repeat='iGameId in aGameIds' href="#/game/{{iGameId}}"><button class='col-xs-12'>Game #{{iGameId}}</button></a>
+<a href="#/game:New"><button class='col-xs-12'>New Game</button></a>
+<a ng-repeat='oGame in aoGameData' href="#/game/{{oGame.id}}" style="color:{{oGame.userStatus}}">
+	<button class='col-xs-12'>Game #{{iGameId}}</button>
+</a>

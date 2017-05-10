@@ -1,0 +1,18 @@
+[
+	{
+		"id":"0",
+		"userStatus":"green"
+	},
+	{
+		"id":"1",
+		"userStatus":"blue"
+	},
+	{
+		"id":"2",
+		"userStatus":"red"
+	},
+	{
+		"id":"3",
+		"userStatus":"yellow"
+	}	
+]

@@ -1,0 +1,24 @@
+[
+	{
+		"gameStatus": "ongoing",
+		"messagedIDs": [
+			0,
+			1,
+			2,
+			3
+		],
+		"doodleIDs": [
+			0,
+			1,
+			2,
+			3
+		],
+		"playerIDs": [
+			0,
+			1,
+			2,
+			3
+		]
+		 
+	}
+]

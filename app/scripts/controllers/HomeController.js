@@ -1,12 +1,10 @@
 angular.module('TelePic').controller('HomeController', [
     '$scope',
-    function($scope) {
+    '$http',
+    function($scope, $http) {
     	//get number of existing games for this user, mock for now
-    	var iNumGameIds = 4;
-    	$scope.sNewGame = 'New';
-    	$scope.aGameIds = [];
-    	for(var i = 0; i < iNumGameIds; i++) {
-    		$scope.aGameIds.push((i+1));
-    	}
+        $http.get('app/mock_data/getGames_response.json').then(function(jsonData) {
+            $scope.aoGameData = jsonData.data;
+        }); 
     }
 ]);
