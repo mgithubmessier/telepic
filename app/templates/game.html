@@ -10,21 +10,27 @@
 	<div ng-show="bPlayersStatus">
 		<table>
 			<tr>
-				<th>Status</th>
+				<th ng-if="!bShowNames">Status</th>
 				<th>Name</th>
 			</tr>
 			<tr ng-repeat="oPlayerStatus in aoPlayerStatus">
-				<td ng-bind="oPlayerStatus.status"></td>
-				<td ng-if="(oPlayerStatus.name | uppercase) != 'YOU'">?</td>
-				<td ng-if="(oPlayerStatus.name | uppercase) == 'YOU'" ng-bind="oPlayerStatus.name"></td>
+				<td ng-if="!bShowNames" ng-bind="oPlayerStatus.status"></td>
+				<td ng-if="bShowNames || (oPlayerStatus.name | uppercase) == 'YOU'" ng-bind="oPlayerStatus.name"></td>
+				<td ng-if="!bShowNames && (oPlayerStatus.name | uppercase) != 'YOU'">?</td>
 			</tr>
 		</table>
-		<a ng-click="viewPlayers()">View all players</a>
+		<a ng-if="!bShowNames" ng-click="viewPlayerNames()">View all players</a>
+		<a ng-if="bShowNames" ng-click="hidePlayerNames()">Hide all players</a>
 	</div>		
 	<div ng-show="bSenMessage">
-		sent message
+		<h2>Sent Message</h2>
+		<input type="color" ng-model="sDrawingColor"></input>
+		<input type="range" ng-model="iLineWidth"></input>
+		<canvas width="200" height="200" drawing></canvas>	
+		<button ng-click="clearDrawing()">Clear</button>
+		<button ng-click="sendDrawing()">Clear</button>
 	</div>
 	<div ng-show="bRecMessage">
-		received messages
+		<h2>Received Message</h2>
 	</div>
 </div>
