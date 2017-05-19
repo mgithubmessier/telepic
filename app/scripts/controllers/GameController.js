@@ -1,43 +1,37 @@
 angular.module('TelePic').controller('GameController', [
     '$scope','$routeParams','$http',
     function($scope, $routeParams, $http) {
-        function showGameMenu() {
-            $scope.bGameMenu = true;
-            $scope.bPlayersStatus = $scope.bRecMessage = $scope.bSenMessage = false;              
-        }
-        function showPlayerStatusMenu() {
-            $scope.bShowNames = false;
-            $scope.bPlayersStatus = true;            
-            $scope.bGameMenu = $scope.bRecMessage = $scope.bSenMessage = false;
-        }
-        function showRecMessage() {
-            $scope.bRecMessage = true;
-            $scope.bPlayersStatus = $scope.bGameMenu = $scope.bSenMessage = false;
-        }
-        function showSenMessage() {
-            $scope.bSenMessage = true;
-            $scope.bPlayersStatus = $scope.bGameMenu =  $scope.bRecMessage = false;            
+        function show(pageToShow) {
+            var asPages = ['bGameMenu','bPlayerStatus','bRecMessage','bSenMessage','bNewDoodle','bGetDoodle'];
+            for(var i = 0; i < asPages.length; i++) {
+                $scope[asPages[i]] = (asPages[i] === pageToShow) ? true : false;
+            }
         }
         $scope.viewPlayersStatus = function() {
-            showPlayerStatusMenu();
+            show('bPlayerStatus');
             $http.get('app/mock_data/getPlayerData_response.json').then(function(jsonData) {
                 $scope.aoPlayerStatus = jsonData.data;
             });
         }
+        $scope.viewGetDoodle = function() {
+            show('bGetDoodle');
+            $http.get('app/mock_data/getDoodle_response.json').then(function(jsonData) {
+                var context = $('canvas[id="getDoodle"]')[0].getContext('2d');
+                // context.putImageData(jsonData.data,0,0); 
+                context.putImageData($scope.imageData,0,0); 
+            });
+        }
         $scope.viewGameMenu = function() {
-            showGameMenu();
-            $http.get('app/mock_data/game_menu.json').then(function(jsonData) {
-                var jsonGameMenu = jsonData.data;
-            });            
+            show('bGameMenu');
         }
         $scope.viewRecMessage = function() {
-            showRecMessage();
+            show('bRecMessage');
             $http.get('app/mock_data/rec_message.json').then(function(jsonData) {
                 var jsonRecMessage = jsonData.data;
             });
         }
         $scope.viewSenMessage = function() {
-            showSenMessage();
+            show('bSenMessage');
             // $http.get('app/mock_data/sen_message.json').then(function(jsonData) {
             //     var jsonSenMessage = jsonData.data;
             // });
@@ -45,27 +39,30 @@ angular.module('TelePic').controller('GameController', [
         $scope.viewPlayerNames = function() {
             $scope.bShowNames = true;
         }
+        $scope.viewNewDoodle = function() {
+            show('bNewDoodle');
+        }
         $scope.hidePlayerNames = function() {
             $scope.bShowNames = false;
         }
         $scope.clearDrawing = function() {
-            var drawing = $('canvas[drawing]');
-            drawing[0].width = drawing[0].width;
+            var canvas = $('canvas[id="canvasNewDoodle"]')[0];
+            canvas.width = canvas.width;
         }      
         $scope.sendDrawing = function() {
-            var drawing = $('canvas[drawing]');
+            var canvas = $('canvas[id="canvasNewDoodle"]')[0];
+            var context = canvas.getContext('2d');
+            var imageData = context.getImageData(0,0,canvas.width,canvas.height);
+            $scope.imageData = imageData;
         }      
         //save the selected game to scope for requests
         $scope.iSelectedGame = $routeParams.iGameId;
         //view default
-        showGameMenu();
+        $scope.bGameMenu = $scope.bPlayerStatus = $scope.bRecMessage = $scope.bSenMessage = $scope.bNewDoodle = $scope.bGetDoodle = false;
+        show('bGameMenu');
         //drawing defaults
         $scope.sDrawingColor = "#000000";
         $scope.bShowNames = false;
         $scope.iLineWidth = 10;
-        //setting labels for buttons
-        $scope.sRecMessage = 'Received message';
-        $scope.sSenMessage = 'Sent message';
-        $scope.sPlayersStatus = 'View players and status';
     }
 ]);

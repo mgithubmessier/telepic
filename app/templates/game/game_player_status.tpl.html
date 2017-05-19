@@ -1,0 +1,15 @@
+<div ng-show="bPlayerStatus">
+	<table>
+		<tr>
+			<th ng-if="!bShowNames">Status</th>
+			<th>Name</th>
+		</tr>
+		<tr ng-repeat="oPlayerStatus in aoPlayerStatus">
+			<td ng-if="!bShowNames" ng-bind="oPlayerStatus.status"></td>
+			<td ng-if="bShowNames || (oPlayerStatus.name | uppercase) == 'YOU'" ng-bind="oPlayerStatus.name"></td>
+			<td ng-if="!bShowNames && (oPlayerStatus.name | uppercase) != 'YOU'">?</td>
+		</tr>
+	</table>
+	<a ng-if="!bShowNames" ng-click="viewPlayerNames()">View all players</a>
+	<a ng-if="bShowNames" ng-click="hidePlayerNames()">Hide all players</a>
+</div>

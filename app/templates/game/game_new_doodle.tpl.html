@@ -1,0 +1,13 @@
+	<div ng-show="bNewDoodle">
+		<h2>New Doodle</h2>
+		<label>Color</label>
+		<input type="color" ng-model="sDrawingColor"></input>
+		<p>Current Color: {{sDrawingColor}}</p>
+		<label>Weight</label>
+		<input type="range" min="1" max="10" ng-model="iLineWidth"></input>
+		<p>Current Weight: {{iLineWidth}}</p>
+		<canvas id="canvasNewDoodle" width="200" height="200" drawing></canvas>	
+		<button ng-click="clearDrawing()">Clear</button>
+		<button ng-click="sendDrawing()">Send</button>
+		{{imageData}}
+	</div>

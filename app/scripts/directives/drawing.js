@@ -12,6 +12,8 @@ angular.module('TelePic').directive("drawing", function() {
             var lastY;
 
             element.on('mousedown', function(event) {
+                                console.log(JSON.stringify(context));
+
                 if (event.offsetX !== undefined) {
                     lastX = event.offsetX;
                     lastY = event.offsetY;

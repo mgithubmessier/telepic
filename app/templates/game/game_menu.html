@@ -1,0 +1,17 @@
+<h1>Game #{{iSelectedGame}}</h1>
+<div ng-show="bGameMenu">
+	<a href="#/home"><button class="col-xs-12">Back to games</button></a>
+	<button class="col-xs-12" ng-click="viewPlayersStatus()">View players and status</button>
+	<button class="col-xs-12" ng-click="viewRecMessage()">Received Message</button>
+	<button class="col-xs-12" ng-click="viewSenMessage()">Sent Message</button>
+	<button class="col-xs-12" ng-click="viewNewDoodle()">New Doodle</button>
+	<button class="col-xs-12" ng-click="viewGetDoodle()">Get Doodle</button>
+</div>
+<div ng-hide="bGameMenu">
+	<button class="col-xs-12" ng-click="viewGameMenu()">Back</button>
+	<player-status></player-status>
+	<new-doodle></new-doodle>		
+	<get-doodle></get-doodle>
+	<sent-message></sent-message>
+	<rec-message></rec-message>
+</div>
