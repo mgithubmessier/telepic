@@ -1,4 +1,5 @@
-<a href="#/game:New"><button class='col-xs-12'>New Game</button></a>
-<a ng-repeat='oGame in aoGameData' href="#/game/{{oGame.id}}" style="color:{{oGame.userStatus}}">
-	<button class='col-xs-12'>Game #{{iGameId}}</button>
+<a href="#/game:New"><button class='col-xs-12'>Create New Game</button></a>
+<a ng-repeat='oGame in aoGameData' href="#/game/{{oGame.sName}}" ><!--style="color:{{oGame.userStatus}}">--> 
+	<button class='col-xs-12'>Game Name - {{oGame.sName}} - Status - {{oGame.sStatus}}</button>
 </a>
+<p ng-bind="loginStatus"></p>

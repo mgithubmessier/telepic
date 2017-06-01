@@ -1,4 +1,4 @@
-var telepic = angular.module('TelePic', ['ngRoute']);
+var telepic = angular.module('TelePic', ['ngRoute','swxSessionStorage']);
 telepic.config(['$locationProvider', function($locationProvider) {
   $locationProvider.hashPrefix('');
 }]);
@@ -12,7 +12,7 @@ telepic.config(['$routeProvider',function($routeProvider) {
 		templateUrl: 'app/templates/home.html',
 		controller: 'HomeController'
 	}).
-	when('/game/:iGameId', {
+	when('/game/:sGameId', {
 		templateUrl: 'app/templates/game/game_menu.html',
 		controller: 'GameController'
 	})
